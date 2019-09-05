@@ -1,6 +1,7 @@
 package com.inspur.greendao;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.inspur.greendao.circleview.CircleViewActivity;
 import com.inspur.greendao.database.StudentDao;
 
 import java.util.ArrayList;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnUpdate;
     @BindView(R.id.btn_query)
     Button btnQuery;
+    @BindView(R.id.btn_view)
+    Button btnView;
 
     @BindView(R.id.btn_replace)
     Button btnReplace;
@@ -96,9 +100,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.btn_count,R.id.btn_replace, R.id.btn_add, R.id.btn_delete, R.id.btn_update, R.id.btn_query})
+    @OnClick({R.id.btn_view,R.id.btn_count,R.id.btn_replace, R.id.btn_add, R.id.btn_delete, R.id.btn_update, R.id.btn_query})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.btn_view:
+
+                startActivity(new Intent(MainActivity.this, CircleViewActivity.class));
+
+                break;
             case R.id.btn_add:
 
                 Student student = new Student((long) 1, "001", "onex", "男");
